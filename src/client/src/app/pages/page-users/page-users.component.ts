@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/store';
-import { usersSelector, selectedUserSelector } from 'src/app/store/selectors/user/user.selectors';
-import { User } from '../../../../../shared/models/user.model';
+import { usersSelector} from 'src/app/store/selectors/user/user.selectors';
+import { Product } from '../../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-page-users',
@@ -11,13 +11,11 @@ import { User } from '../../../../../shared/models/user.model';
   styleUrls: ['./page-users.component.scss']
 })
 export class PageUsersComponent implements OnInit {
-  users$: Observable<User[]>;
-  selectedUser$: Observable<User | null>;
+  products$: Observable<Product[]>;
   constructor(
     private store: Store<AppState>,
   ) {
-    this.users$ = this.store.select(usersSelector);
-    this.selectedUser$ = this.store.select(selectedUserSelector);
+    this.products$ = this.store.select(usersSelector);
    }
 
   ngOnInit(): void {

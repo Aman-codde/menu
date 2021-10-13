@@ -7,24 +7,18 @@ import {
   createUser,
   createUserFailure,
   createUserSuccess,
-  deleteUser,
-  deleteUserFailure,
-  deleteUserSuccess,
   loadUsers,
   loadUsersFailure,
   loadUsersSuccess,
-  updateUser,
-  updateUserFailure,
-  updateUserSuccess,
 } from '../../actions/user/user.actions';
 
 @Injectable()
 export class UserEffects {
-  loadUsers$ = createEffect(() =>
+  loadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadUsers),
       mergeMap(() =>
-        this.userService.getUsers().pipe(
+        this.userService.getProducts().pipe(
           map((data) => loadUsersSuccess({ data })),
           catchError((error) => of(loadUsersFailure({ error })))
         )
@@ -32,23 +26,11 @@ export class UserEffects {
     )
   );
 
-  updateUsers$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(updateUser),
-      mergeMap((action) =>
-        this.userService.updateUser(action.data).pipe(
-          map((data) => updateUserSuccess({ data })),
-          catchError((error) => of(updateUserFailure({ error })))
-        )
-      )
-    )
-  );
-
-  createUsers$ = createEffect(() =>
+  createProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createUser),
       mergeMap((action) =>
-        this.userService.createUser(action.data).pipe(
+        this.userService.createProduct(action.data).pipe(
           map((data) => createUserSuccess({ data })),
           catchError((error) => of(createUserFailure({ error })))
         )
@@ -56,17 +38,6 @@ export class UserEffects {
     )
   );
 
-  deleteUsers$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(deleteUser),
-      mergeMap((action) =>
-        this.userService.deleteUser(action.data).pipe(
-          map((data) => deleteUserSuccess({ data })),
-          catchError((error) => of(deleteUserFailure({ error })))
-        )
-      )
-    )
-  );
 
   constructor(private actions$: Actions, private userService: UserService) {}
 }

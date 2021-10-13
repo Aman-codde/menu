@@ -1,3 +1,3 @@
-import { User } from "../../../../shared/models/user.model"
+import { Product } from "../../../../shared/models/user.model"
 
-export type Postable = User
+export type Postable = Product

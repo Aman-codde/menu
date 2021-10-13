@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Error } from 'mongoose';
-import { User } from '../../../../../../shared/models/user.model';
+import { Product } from '../../../../../../shared/models/user.model';
 
 export const loadUsers = createAction(
   '[User] Load Users'
@@ -8,7 +8,7 @@ export const loadUsers = createAction(
 
 export const loadUsersSuccess = createAction(
   '[User] Load Users Success',
-  props<{ data: User[] }>()
+  props<{ data: Product[] }>()
 );
 
 export const loadUsersFailure = createAction(
@@ -16,19 +16,16 @@ export const loadUsersFailure = createAction(
   props<{ error: Error }>()
 );
 
-export const selectUserAction = createAction(
-  '[User] Select User',
-  props<{ data: User | null }>()
-);
+
 
 export const createUser = createAction(
   '[User] Create User',
-  props<{data: User}>()
+  props<{data: Product}>()
 );
 
 export const createUserSuccess = createAction(
   '[User] Create User Success',
-  props<{ data: User }>()
+  props<{ data: Product }>()
 );
 
 export const createUserFailure = createAction(
@@ -36,32 +33,3 @@ export const createUserFailure = createAction(
   props<{ error: Error }>()
 );
 
-export const updateUser = createAction(
-  '[User] Update User',
-  props<{data: User}>()
-);
-
-export const updateUserSuccess = createAction(
-  '[User] Update User Success',
-  props<{ data: User }>()
-);
-
-export const updateUserFailure = createAction(
-  '[User] Update User Failure',
-  props<{ error: Error }>()
-);
-
-export const deleteUser = createAction(
-  '[User] Delete User',
-  props<{data: User}>()
-);
-
-export const deleteUserSuccess = createAction(
-  '[User] Delete User Success',
-  props<{ data: User }>()
-);
-
-export const deleteUserFailure = createAction(
-  '[User] Delete User Failure',
-  props<{ error: Error }>()
-);

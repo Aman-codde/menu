@@ -4,9 +4,10 @@ import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
 import { AppState } from 'src/app/store';
-import { deleteUser, loadUsers, selectUserAction } from 'src/app/store/actions/user/user.actions';
-import { selectedUserSelector, usersSelector } from 'src/app/store/selectors/user/user.selectors';
-import { User } from '../../../../../shared/models/user.model';
+import {  loadUsers } from 'src/app/store/actions/user/user.actions';
+import {  usersSelector } from 'src/app/store/selectors/user/user.selectors';
+import { Category } from '../../../../../shared/models/category.model';
+import { Product } from '../../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-users-list',
@@ -14,39 +15,18 @@ import { User } from '../../../../../shared/models/user.model';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-
-  @Input() public users: User[] = [];
-  @Input() public selectedUser: User | null = null;
+  public $categories : Observable<any[]>;
+  @Input() public products: Product[] = [];
 
   constructor(
     private userService: UserService,
     private store: Store<AppState>,
     ) {
-
-
+      this.$categories = this.userService.getCategories();
   }
 
   ngOnInit(): void {
     this.store.dispatch(loadUsers());
+    
   }
-
-
-
-  deleteUser(user: User) {
-    this.store.dispatch(deleteUser({data: user}))
-    console.log(`user '${user.name}' deleted successfully`);
-  }
-
-  selectUser(user: User, selectedUser: User | null) {
-    this.store.dispatch(selectUserAction({data: this.isSelected(selectedUser, user) ?  null : user}))
-  }
-
-  checkSelected(selectedUser: User | null, user: User) {
-    return this.isSelected(selectedUser, user) ? 'green' : 'black';
-  }
-
-  isSelected(selectedUser: User | null, user: User) {
-    return selectedUser?._id === user._id;
-  }
-
 }

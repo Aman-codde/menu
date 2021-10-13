@@ -6,13 +6,10 @@ const userFeatureSelector = createFeatureSelector<AppState, fromUser.State>(from
 
 export const usersSelector = createSelector(
   userFeatureSelector,
-  (state) => state.users
+  (state) => state.products
 );
 
-export const selectedUserSelector = createSelector(
-  userFeatureSelector,
-  (state) => state.selectedUser
-)
+
 
 
 

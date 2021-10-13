@@ -1,8 +1,8 @@
-<form [formGroup] = 'addUser'>
-    <input type="text" formControlName='name' placeholder="name">
-    <input type="text" formControlName='email' placeholder="email">
-    <input type="text" formControlName='username' placeholder="username">
-    <button (click)='postUser(selectedUser)' [disabled]='addUser.invalid'>{{(selectedUser) ? 'Update User' : 'Add User'}}</button>
+<form [formGroup] = 'addProduct'>
+    <input type="text" formControlName='product_name' placeholder="product name">
+    <input type="text" formControlName='categories' placeholder="categories">
+    <button (click) = 'postProduct()'>Add Product</button>
+    <!--<button (click)='postUser(selectedUser)' [disabled]='addUser.invalid'>{{(selectedUser) ? 'Update User' : 'Add User'}}</button>-->
 </form>
 
 

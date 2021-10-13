@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
-import type { User } from '../../shared/models/user.model';
+import type { Product } from '../../shared/models/user.model';
 const {Schema, model} = mongoose
 
-const userSchema = new Schema<User>({
-    name: {type: String, required: true},
-    username: {type: String, required: true},
-    email: {type: String, required: true},
+const productSchema = new Schema<Product>({
+    product_name: {type: String, required: true},
+    categories: [{type: Schema.Types.ObjectId, ref: 'Category'}],
 })
 
-export const UserModel = model<User>('User',userSchema)
+export const ProductModel = model<Product>('Product',productSchema)
