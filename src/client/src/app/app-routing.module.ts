@@ -4,7 +4,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { PageUsersComponent } from './pages/page-users/page-users.component';
 
 const routes: Routes = [
-  {path: 'users', component: PageUsersComponent}
+  {path: 'products', component: PageUsersComponent}
 ];
 
 @NgModule({
