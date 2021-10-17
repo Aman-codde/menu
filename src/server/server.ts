@@ -32,7 +32,8 @@ app.get('/', function(req, res) {
 //create-category
 app.post('/create-category', function(req, res){
     const new_category = new CategoryModel({
-        category_name: 'Electronics',
+        category_name: 'Kids',
+        parentCategory: '616716a7a9480f243b116d67'
     })
     new_category
         .save()
@@ -54,15 +55,23 @@ app.get('/categories',function(req,res){
     .catch( err => res.json(err))
 })
 
+//update category 
+// app.post('/update-category:id', function(req,res) {
+//     CategoryModel
+//     .findByIdAndUpdate(
+//         req.params.id = ""
+//     )
+// })
+
 //create-product
 app.post('/create-product', function(req,res) {
     const new_product = new ProductModel({
-        product_name: "Women's Skirt",
-       // price: 12.57,
+        product_name: "Women's black dress",
+        price: 12.55,
         quantity: 14,
-        // categories: ["616716a7a9480f243b116d67",
-        //    "616722192104dfe978de5e1c"
-        // ]
+        categories: ["616716a7a9480f243b116d67",
+           "616722192104dfe978de5e1c"
+        ]
     })
     new_product
         .save()
